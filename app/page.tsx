@@ -9,6 +9,7 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ChatBot } from "@/components/ChatBot";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { CookieConsent } from "@/components/CookieConsent";
 
 // Single-page portfolio. Sekcije dodajamo postopoma.
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
       <Footer />
       <ChatBot />
       <WhatsAppButton />
+      <CookieConsent />
     </>
   );
 }

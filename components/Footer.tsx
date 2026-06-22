@@ -8,7 +8,7 @@ export function Footer() {
       {/* tanka gradientna črta na vrhu */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
-      <div className="container-px grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="container-px grid gap-8 py-9 sm:grid-cols-2 sm:py-10 lg:grid-cols-4">
         {/* Brand */}
         <div className="lg:col-span-2">
           <a href="#home" className="text-xl font-bold tracking-tight">
@@ -65,7 +65,7 @@ export function Footer() {
 
       {/* Spodnja vrstica */}
       <div className="border-t border-border">
-        <div className="container-px flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
+        <div className="container-px flex flex-col items-center justify-between gap-3 py-4 sm:flex-row sm:py-5">
           <p className="text-xs text-muted">© {year} {siteConfig.name}. Vse pravice pridržane.</p>
           <a href="#home" className="inline-flex items-center gap-1.5 text-xs font-medium text-muted transition-colors hover:text-primary">
             Na vrh
