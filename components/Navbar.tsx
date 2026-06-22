@@ -4,10 +4,21 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks } from "@/lib/siteConfig";
+import { useI18n } from "@/lib/i18n";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 
+// Preslikava sidra → ključ v slovarju.
+const NAV_KEY: Record<string, "home" | "projects" | "about" | "contact"> = {
+  "#home": "home",
+  "#projects": "projects",
+  "#about": "about",
+  "#contact": "contact",
+};
+
 export function Navbar() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("#home");
 
@@ -55,7 +66,7 @@ export function Navbar() {
                     active === link.href ? "text-primary" : "text-muted"
                   }`}
                 >
-                  {link.label}
+                  {t.nav[NAV_KEY[link.href]]}
                   {/* animirano podčrtavanje (raste iz sredine) */}
                   <span
                     className={`absolute -bottom-1.5 left-0 h-0.5 w-full origin-center rounded-full bg-gradient-to-r from-primary to-accent transition-transform duration-300 ${
@@ -66,11 +77,13 @@ export function Navbar() {
               </li>
             ))}
           </ul>
+          <LanguageSwitcher />
           <ThemeToggle />
         </div>
 
         {/* Mobilni gumbi */}
         <div className="flex items-center gap-2 md:hidden">
+          <LanguageSwitcher />
           <ThemeToggle />
           <button
             type="button"
@@ -118,7 +131,7 @@ export function Navbar() {
                         : "text-muted hover:bg-surface hover:text-fg"
                     }`}
                   >
-                    {link.label}
+                    {t.nav[NAV_KEY[link.href]]}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
                   </a>
                 </motion.li>

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { projects } from "@/data/projects";
 import { skills } from "@/lib/siteConfig";
+import { useI18n } from "@/lib/i18n";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -36,12 +37,13 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 export function Stats() {
+  const { t } = useI18n();
   const liveCount = projects.filter((p) => p.live).length;
   const items = [
-    { value: projects.length, suffix: "", label: "Projektov" },
-    { value: liveCount, suffix: "", label: "V živo" },
-    { value: skills.length, suffix: "+", label: "Tehnologij" },
-    { value: 100, suffix: "%", label: "Predanost" },
+    { value: projects.length, suffix: "", label: t.stats.projects },
+    { value: liveCount, suffix: "", label: t.stats.live },
+    { value: skills.length, suffix: "+", label: t.stats.tech },
+    { value: 100, suffix: "%", label: t.stats.dedication },
   ];
 
   return (

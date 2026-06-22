@@ -1,7 +1,15 @@
+"use client";
+
 // Footer — stolpci (brand, navigacija, kontakt), gumb "na vrh", copyright.
 import { siteConfig, navLinks } from "@/lib/siteConfig";
+import { useI18n } from "@/lib/i18n";
+
+const NAV_KEY: Record<string, "home" | "projects" | "about" | "contact"> = {
+  "#home": "home", "#projects": "projects", "#about": "about", "#contact": "contact",
+};
 
 export function Footer() {
+  const { t } = useI18n();
   const year = new Date().getFullYear();
   return (
     <footer className="relative border-t border-border bg-surface/40">
@@ -16,7 +24,7 @@ export function Footer() {
             <span className="text-accent">.</span>
           </a>
           <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">
-            {siteConfig.slogan}
+            {t.hero.slogan}
           </p>
           <div className="mt-4 flex gap-3">
             <a aria-label="GitHub" href={siteConfig.social.github} target="_blank" rel="noopener noreferrer"
@@ -32,12 +40,12 @@ export function Footer() {
 
         {/* Navigacija */}
         <div>
-          <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-fg">Navigacija</h3>
+          <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-fg">{t.footer.nav}</h3>
           <ul className="space-y-2">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="text-sm text-muted transition-colors hover:text-primary">
-                  {link.label}
+                  {t.nav[NAV_KEY[link.href]]}
                 </a>
               </li>
             ))}
@@ -46,7 +54,7 @@ export function Footer() {
 
         {/* Kontakt */}
         <div>
-          <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-fg">Kontakt</h3>
+          <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-fg">{t.footer.contact}</h3>
           <ul className="space-y-2 text-sm">
             <li>
               <a href={`mailto:${siteConfig.email}`} className="text-muted transition-colors hover:text-primary">
@@ -66,9 +74,9 @@ export function Footer() {
       {/* Spodnja vrstica */}
       <div className="border-t border-border">
         <div className="container-px flex flex-col items-center justify-between gap-3 py-4 sm:flex-row sm:py-5">
-          <p className="text-xs text-muted">© {year} {siteConfig.name}. Vse pravice pridržane.</p>
+          <p className="text-xs text-muted">© {year} {siteConfig.name}. {t.footer.rights}</p>
           <a href="#home" className="inline-flex items-center gap-1.5 text-xs font-medium text-muted transition-colors hover:text-primary">
-            Na vrh
+            {t.footer.top}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 15-6-6-6 6" /></svg>
           </a>
         </div>

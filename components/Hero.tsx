@@ -3,13 +3,12 @@
 // Hero sekcija: ime, slogan, CTA gumba in prostor za maskota (placeholder).
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/siteConfig";
+import { useI18n } from "@/lib/i18n";
 import { Typewriter } from "./ui/Typewriter";
 import { Mascot } from "./Mascot";
 
-// Nazivi za typewriter učinek.
-const ROLES = ["Web developer", "študent", "full-stack razvijalec", "iz Slovenije"];
-
 export function Hero() {
+  const { t } = useI18n();
   return (
     <section
       id="home"
@@ -41,20 +40,20 @@ export function Hero() {
         >
           <p className="mb-4 mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm text-muted sm:mt-0">
             <span className="h-2 w-2 rounded-full bg-primary" />
-            Na voljo za projekte
+            {t.hero.badge}
           </p>
 
           <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            Živjo, sem{" "}
+            {t.hero.greeting}{" "}
             <span className="text-gradient">{siteConfig.name}</span>
           </h1>
 
           <p className="mt-4 text-lg font-medium text-accent">
-            <Typewriter words={ROLES} />
+            <Typewriter words={[...t.hero.roles]} />
           </p>
 
           <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
-            {siteConfig.slogan}
+            {t.hero.slogan}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -62,13 +61,13 @@ export function Hero() {
               href="#projects"
               className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-transform hover:-translate-y-0.5"
             >
-              Poglej projekte
+              {t.hero.ctaProjects}
             </a>
             <a
               href="#contact"
               className="rounded-full border border-border bg-surface px-6 py-3 text-sm font-semibold text-fg transition-colors hover:border-accent hover:text-accent"
             >
-              Kontakt
+              {t.hero.ctaContact}
             </a>
           </div>
         </motion.div>

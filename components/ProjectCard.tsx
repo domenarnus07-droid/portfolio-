@@ -7,9 +7,13 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Project } from "@/data/projects";
 import { Badge } from "./ui/Badge";
+import { useI18n } from "@/lib/i18n";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const { t } = useI18n();
   const [zoom, setZoom] = useState(false);
+  const description =
+    t.projDesc[project.id as keyof typeof t.projDesc] || project.description;
 
   return (
     <motion.article
@@ -30,7 +34,7 @@ export function ProjectCard({ project }: { project: Project }) {
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <span className="absolute right-2 top-2 rounded-md bg-black/50 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-          🔍 Povečaj
+          🔍 {t.projects.zoom}
         </span>
       </button>
 
@@ -77,7 +81,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-lg font-semibold">{project.title}</h3>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
-          {project.description}
+          {description}
         </p>
 
         {/* Tehnologije */}
@@ -92,7 +96,7 @@ export function ProjectCard({ project }: { project: Project }) {
           href={`/projekti/${project.id}`}
           className="mt-4 inline-flex w-fit items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-accent"
         >
-          Več o projektu →
+          {t.projects.more} →
         </Link>
 
         {/* Gumbi (prikažemo le, če povezava obstaja) */}
@@ -100,7 +104,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {/* Če ni ne live ne kode, prikažemo nevsiljivo oznako "Kmalu" */}
           {!project.live && !project.github && (
             <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border px-4 py-2 text-sm font-medium text-muted">
-              Kmalu online
+              {t.projects.soon}
             </span>
           )}
           {project.live && (
@@ -110,7 +114,7 @@ export function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
-              Live demo
+              {t.projects.live}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M7 17 17 7M7 7h10v10" />
               </svg>
@@ -123,7 +127,7 @@ export function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-sm font-semibold text-fg transition-colors hover:border-accent hover:text-accent"
             >
-              Koda
+              {t.projects.code}
             </a>
           )}
         </div>

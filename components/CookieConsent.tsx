@@ -3,10 +3,12 @@
 // Animacijski prikaz piškotkov ob prvem obisku. Izbiro shrani v localStorage.
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useI18n } from "@/lib/i18n";
 
 const KEY = "dc-cookie-consent";
 
 export function CookieConsent() {
+  const { t } = useI18n();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -38,22 +40,22 @@ export function CookieConsent() {
           <div className="flex items-start gap-3">
             <span className="text-2xl">🍪</span>
             <div className="flex-1">
-              <p className="text-sm font-semibold">Piškotki</p>
+              <p className="text-sm font-semibold">{t.cookie.title}</p>
               <p className="mt-1 text-sm leading-relaxed text-muted">
-                Ta stran uporablja le nujne piškotke za boljšo izkušnjo. Brez sledenja.
+                {t.cookie.text}
               </p>
               <div className="mt-4 flex gap-2">
                 <button
                   onClick={() => decide("accepted")}
                   className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
                 >
-                  Sprejmi
+                  {t.cookie.accept}
                 </button>
                 <button
                   onClick={() => decide("declined")}
                   className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-fg"
                 >
-                  Zavrni
+                  {t.cookie.decline}
                 </button>
               </div>
             </div>

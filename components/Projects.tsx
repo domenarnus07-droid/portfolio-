@@ -7,45 +7,46 @@ import { Section } from "./ui/Section";
 import { SectionHeading } from "./ui/SectionHeading";
 import { ProjectCard } from "./ProjectCard";
 import { projects } from "@/data/projects";
-
-const ALL = "Vse";
+import { useI18n } from "@/lib/i18n";
 
 export function Projects() {
-  const [filter, setFilter] = useState<string>(ALL);
+  const { t } = useI18n();
+  const ALL = t.projects.all;
+  const [filter, setFilter] = useState<string>("__all__");
 
   // Unikatne tehnologije iz vseh projektov (za gumbe filtra).
   const techs = useMemo(() => {
     const set = new Set<string>();
-    projects.forEach((p) => p.tech.forEach((t) => set.add(t)));
-    return [ALL, ...Array.from(set).sort()];
+    projects.forEach((p) => p.tech.forEach((tech) => set.add(tech)));
+    return ["__all__", ...Array.from(set).sort()];
   }, []);
 
   const filtered =
-    filter === ALL ? projects : projects.filter((p) => p.tech.includes(filter));
+    filter === "__all__" ? projects : projects.filter((p) => p.tech.includes(filter));
 
   return (
     <Section id="projects">
       <div className="container-px">
         <SectionHeading
-          eyebrow="Moje delo"
-          title="Projekti"
-          description="Izbor projektov, ki sem jih zgradil — od spletnih trgovin do aplikacij z backendom."
+          eyebrow={t.projects.eyebrow}
+          title={t.projects.title}
+          description={t.projects.desc}
         />
 
         {/* Filter po tehnologiji */}
         <div className="mb-8 flex flex-wrap gap-2">
-          {techs.map((t) => (
+          {techs.map((tech) => (
             <button
-              key={t}
+              key={tech}
               type="button"
-              onClick={() => setFilter(t)}
+              onClick={() => setFilter(tech)}
               className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
-                filter === t
+                filter === tech
                   ? "border-primary bg-primary text-white"
                   : "border-border bg-surface text-muted hover:border-primary hover:text-fg"
               }`}
             >
-              {t}
+              {tech === "__all__" ? ALL : tech}
             </button>
           ))}
         </div>

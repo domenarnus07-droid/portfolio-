@@ -4,17 +4,14 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useFloatingVisible } from "@/lib/useFloatingVisible";
+import { useI18n } from "@/lib/i18n";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-const GREETING: Msg = {
-  role: "assistant",
-  content: "Živjo! 👋 Sem Domnov pomočnik. Vprašaj me o njegovih projektih, znanjih ali kontaktu.",
-};
-
 export function ChatBot() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Msg[]>([GREETING]);
+  const [messages, setMessages] = useState<Msg[]>([{ role: "assistant", content: t.chatbot.greeting }]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -84,8 +81,8 @@ export function ChatBot() {
             <div className="flex items-center gap-3 border-b border-border bg-gradient-to-r from-primary/15 to-accent/10 p-4">
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white text-sm font-bold">D</span>
               <div>
-                <p className="text-sm font-semibold">Domnov pomočnik</p>
-                <p className="text-xs text-muted">Običajno odgovori takoj</p>
+                <p className="text-sm font-semibold">{t.chatbot.name}</p>
+                <p className="text-xs text-muted">{t.chatbot.sub}</p>
               </div>
             </div>
 
@@ -119,7 +116,7 @@ export function ChatBot() {
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Napiši sporočilo …"
+                placeholder={t.chatbot.placeholder}
                 className="flex-1 rounded-full border border-border bg-bg px-4 py-2 text-sm outline-none focus:border-primary"
               />
               <button
