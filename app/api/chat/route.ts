@@ -56,27 +56,30 @@ export async function POST(request: Request) {
     }
     const lastUser = [...messages].reverse().find((m) => m.role === "user")?.content || "";
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {
       // Brez ključa — rezervni odgovor.
       return NextResponse.json({ reply: fallbackReply(String(lastUser)) });
     }
 
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+    // Groq (OpenAI-združljiv API).
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
+        authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
+        model: "llama-3.3-70b-versatile",
         max_tokens: 400,
-        system: SYSTEM,
-        messages: messages.slice(-8).map((m: { role: string; content: string }) => ({
-          role: m.role === "assistant" ? "assistant" : "user",
-          content: String(m.content || ""),
-        })),
+        temperature: 0.6,
+        messages: [
+          { role: "system", content: SYSTEM },
+          ...messages.slice(-8).map((m: { role: string; content: string }) => ({
+            role: m.role === "assistant" ? "assistant" : "user",
+            content: String(m.content || ""),
+          })),
+        ],
       }),
     });
 
@@ -85,7 +88,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ reply: fallbackReply(String(lastUser)) });
     }
     const data = await res.json();
-    const reply = data?.content?.[0]?.text || fallbackReply(String(lastUser));
+    const reply = data?.choices?.[0]?.message?.content || fallbackReply(String(lastUser));
     return NextResponse.json({ reply });
   } catch {
     return NextResponse.json({ error: "Napaka pri klepetu." }, { status: 500 });

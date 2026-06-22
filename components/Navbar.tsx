@@ -2,8 +2,9 @@
 
 // Fiksen navbar z navigacijo, theme toggle in hamburger menijem na mobilnem.
 import { useEffect, useState } from "react";
-import { navLinks, siteConfig } from "@/lib/siteConfig";
+import { navLinks } from "@/lib/siteConfig";
 import { ThemeToggle } from "./ThemeToggle";
+import { Logo } from "./Logo";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -37,9 +38,8 @@ export function Navbar() {
         aria-label="Glavna navigacija"
       >
         {/* Logotip / ime */}
-        <a href="#home" className="text-lg font-bold tracking-tight">
-          <span className="text-primary">{siteConfig.name.split(" ")[0]}</span>
-          <span className="text-accent">.</span>
+        <a href="#home" aria-label="Domov">
+          <Logo />
         </a>
 
         {/* Namizna navigacija */}
