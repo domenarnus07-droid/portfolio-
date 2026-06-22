@@ -4,7 +4,7 @@ export const siteConfig = {
   role: "Web developer · dijak · Slovenija",
   slogan:
     "Gradim sodobne, hitre in lepe spletne strani. Osredotočen na čist dizajn in dober uporabniški občutek.",
-  url: "https://portfolio-puce-nine-zugahw3322.vercel.app", // produkcijska domena (SEO/OG)
+  url: "https://domen-developer.vercel.app", // produkcijska domena (SEO/OG)
   email: "domen.arnus07@gmail.com",
   phone: "031 859 165",
   phoneHref: "tel:+38631859165",
