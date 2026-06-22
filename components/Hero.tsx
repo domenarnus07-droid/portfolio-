@@ -7,7 +7,7 @@ import { Typewriter } from "./ui/Typewriter";
 import { Mascot } from "./Mascot";
 
 // Nazivi za typewriter učinek.
-const ROLES = ["Web developer", "dijak", "full-stack razvijalec", "iz Slovenije"];
+const ROLES = ["Web developer", "študent", "full-stack razvijalec", "iz Slovenije"];
 
 export function Hero() {
   return (

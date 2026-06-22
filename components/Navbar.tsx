@@ -51,11 +51,17 @@ export function Navbar() {
                 <a
                   href={link.href}
                   aria-current={active === link.href ? "true" : undefined}
-                  className={`text-sm font-medium transition-colors hover:text-fg ${
+                  className={`group relative text-sm font-medium transition-colors hover:text-fg ${
                     active === link.href ? "text-primary" : "text-muted"
                   }`}
                 >
                   {link.label}
+                  {/* animirano podčrtavanje (raste iz sredine) */}
+                  <span
+                    className={`absolute -bottom-1.5 left-0 h-0.5 w-full origin-center rounded-full bg-gradient-to-r from-primary to-accent transition-transform duration-300 ${
+                      active === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
                 </a>
               </li>
             ))}

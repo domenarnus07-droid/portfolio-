@@ -1,7 +1,7 @@
 // Osrednja konfiguracija strani — uredi svoje podatke tukaj.
 export const siteConfig = {
   name: "Domen Arnuš", // [TODO: preveri zapis imena]
-  role: "Web developer · dijak · Slovenija",
+  role: "Web developer · študent · Slovenija",
   slogan:
     "Gradim sodobne, hitre in lepe spletne strani. Osredotočen na čist dizajn in dober uporabniški občutek.",
   url: "https://domen-developer.vercel.app", // produkcijska domena (SEO/OG)
@@ -16,7 +16,7 @@ export const siteConfig = {
   cvPath: "", // npr. "/cv.pdf"
   // Kratka predstavitev za sekcijo "O meni" (uredi po želji).
   about: [
-    "Sem dijak in spletni razvijalec iz Slovenije, ki rad spreminja ideje v delujoče izdelke.",
+    "Sem študent in spletni razvijalec iz Slovenije, ki rad spreminja ideje v delujoče izdelke.",
     "Gradim polne spletne aplikacije — od dizajna v ospredju do zaledja z bazo, prijavo in admin ploščo. Najraje delam s čistim, sodobnim videzom in dobrim uporabniškim občutkom.",
   ],
 } as const;

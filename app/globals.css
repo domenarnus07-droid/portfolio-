@@ -72,6 +72,14 @@
   :focus-visible {
     @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-bg;
   }
+
+  /* Prepreči samodejno povečavo na telefonu ob fokusu v polje
+     (mobilni brskalniki zoomajo, če je pisava < 16px). */
+  @media (max-width: 640px) {
+    input, textarea, select {
+      font-size: 16px !important;
+    }
+  }
 }
 
 @layer components {
