@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/siteConfig";
 import { Typewriter } from "./ui/Typewriter";
+import { Mascot } from "./Mascot";
 
 // Nazivi za typewriter učinek.
 const ROLES = ["Web developer", "dijak", "full-stack razvijalec", "iz Slovenije"];
@@ -79,11 +80,9 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          {/* [TODO: zamenjaj ta placeholder s svojim maskotom (SVG/PNG)] */}
+          {/* Maskot (komponenta Mascot) — zamenjaj v components/Mascot.tsx */}
           <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-primary/30 to-accent/30 blur-2xl animate-float" />
-          <div className="relative flex h-full w-full animate-float items-center justify-center rounded-[2.5rem] border border-border glass">
-            <span className="text-sm text-muted">Prostor za maskota</span>
-          </div>
+          <Mascot className="relative h-full w-full animate-float drop-shadow-2xl" />
         </motion.div>
       </div>
     </section>
