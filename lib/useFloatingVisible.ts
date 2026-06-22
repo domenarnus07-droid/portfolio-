@@ -13,8 +13,8 @@ export function useFloatingVisible() {
     const contact = document.getElementById("contact");
     const footer = document.querySelector("footer");
     const watched = [home, contact, footer].filter(
-      (el): el is Element => el !== null
-    );
+      (el) => el !== null
+    ) as Element[];
     if (!watched.length) return;
 
     const intersecting = new Set<Element>();
