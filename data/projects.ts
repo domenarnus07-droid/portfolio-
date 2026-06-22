@@ -1,6 +1,6 @@
 // Podatki o projektih — uredi tukaj (dodaj/odstrani/popravi).
 // Prazna povezava ("") pomeni, da se gumb ("Live demo" / "Koda") ne prikaže.
-// Sliko daj v public/projects/ in vpiši pot (npr. "/projects/domen-core.svg").
+// Sliko daj v public/projects/ in vpiši pot (npr. "/projects/domen-core.png").
 
 export type Project = {
   id: string;
@@ -21,7 +21,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "MongoDB", "Socket.io"],
     live: "https://domen-core.onrender.com",
     github: "https://github.com/domenarnus07-droid/domen-core",
-    image: "/projects/domen-core.svg", // [TODO: dodaj screenshot]
+    image: "/projects/domen-core.png",
   },
   {
     id: "soles",
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     tech: ["HTML", "JavaScript", "Framer Motion"],
     live: "https://qr-koda.onrender.com",
     github: "https://github.com/domenarnus07-droid/qr-koda",
-    image: "/projects/qr-generator.svg", // [TODO: screenshot]
+    image: "/projects/qr-generator.png",
   },
   {
     id: "elektro-novateh",
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "MongoDB", "PDFKit"],
     live: "https://elektronovateh.onrender.com",
     github: "https://github.com/domenarnus07-droid/elektronovateh",
-    image: "/projects/elektro-novateh.svg", // [TODO: screenshot]
+    image: "/projects/elektro-novateh.png",
   },
   {
     id: "studyos",
@@ -59,6 +59,6 @@ export const projects: Project[] = [
     tech: ["React", "Vite", "Express", "MongoDB"],
     live: "https://studyos.onrender.com",
     github: "https://github.com/domenarnus07-droid/aplikacijafaks",
-    image: "/projects/studyos.svg", // [TODO: screenshot]
+    image: "/projects/studyos.png",
   },
 ];
