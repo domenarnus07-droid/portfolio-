@@ -48,7 +48,7 @@ export const projects: Project[] = [
     description:
       "Namizni delovni prostor za študente FERI — branje dokumentov, organizacija in prijava.",
     tech: ["React", "Vite", "Express", "MongoDB"],
-    live: "https://studyos.onrender.com",
+    live: "https://aplikacijafaks.onrender.com",
     github: "https://github.com/domenarnus07-droid/aplikacijafaks",
     image: "/projects/studyos.png",
   },
