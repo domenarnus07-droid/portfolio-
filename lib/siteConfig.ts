@@ -6,6 +6,8 @@ export const siteConfig = {
     "Gradim sodobne, hitre in lepe spletne strani. Osredotočen na čist dizajn in dober uporabniški občutek.",
   url: "https://portfolio-puce-nine-zugahw3322.vercel.app", // produkcijska domena (SEO/OG)
   email: "domen.arnus07@gmail.com",
+  phone: "031 859 165",
+  phoneHref: "tel:+38631859165",
   social: {
     github: "https://github.com/domenarnus07-droid",
     linkedin: "https://www.linkedin.com/in/domen-arnu%C5%A1-836a11418/",
