@@ -24,15 +24,6 @@ export const projects: Project[] = [
     image: "/projects/domen-core.png",
   },
   {
-    id: "soles",
-    title: "SOLES",
-    description: "Animiran koncept spletne trgovine s čevlji — poudarek na gibanju in prehodih.",
-    tech: ["Next.js", "Tailwind", "Framer Motion"],
-    live: "", // [TODO: live URL]
-    github: "", // [TODO: GitHub]
-    image: "/projects/soles.svg", // [TODO: screenshot]
-  },
-  {
     id: "qr-generator",
     title: "QR Generator — Elektro Novateh",
     description: "Spletni generator QR kod in izkaznic za podjetje Elektro Novateh.",
