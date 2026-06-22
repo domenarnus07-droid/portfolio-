@@ -4,7 +4,7 @@ export const siteConfig = {
   role: "Web developer · dijak · Slovenija",
   slogan:
     "Gradim sodobne, hitre in lepe spletne strani. Osredotočen na čist dizajn in dober uporabniški občutek.",
-  url: "https://domen.dev", // [TODO: tvoja domena za SEO/OG]
+  url: "https://portfolio-puce-nine-zugahw3322.vercel.app", // produkcijska domena (SEO/OG)
   email: "domen.arnus07@gmail.com",
   social: {
     github: "https://github.com/domenarnus07-droid",
