@@ -8,6 +8,7 @@ import { Timeline } from "@/components/Timeline";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ChatBot } from "@/components/ChatBot";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 // Single-page portfolio. Sekcije dodajamo postopoma.
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       </main>
       <Footer />
       <ChatBot />
+      <WhatsAppButton />
     </>
   );
 }
