@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Barvni sistem kot CSS spremenljivke (RGB kanali, brez "rgb(...)" ovoja,
+  da deluje s Tailwind <alpha-value>). Spremeni vrednosti tukaj za rebrand.
+  Primarna = modra, accent = oranžna. Temni način = temno modra (navy).
+*/
+@layer base {
+  :root {
+    --color-primary: 59 130 246; /* modra */
+    --color-primary-soft: 147 197 253;
+    --color-accent: 249 115 22; /* oranžna */
+
+    /* Svetla tema */
+    --color-bg: 247 249 252;
+    --color-surface: 255 255 255;
+    --color-fg: 15 23 42;
+    --color-muted: 71 85 105;
+    --color-border: 226 232 240;
+  }
+
+  .dark {
+    /* Temni način — temno modra (navy) */
+    --color-primary: 96 165 250; /* svetlejša modra za kontrast na navy */
+    --color-primary-soft: 147 197 253;
+    --color-accent: 251 146 60;
+
+    --color-bg: 8 13 30;
+    --color-surface: 16 24 46;
+    --color-fg: 226 232 240;
+    --color-muted: 148 163 184;
+    --color-border: 30 41 66;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-fg antialiased;
+    /* Subtilno modro žarenje v ozadju temne teme */
+    background-image:
+      radial-gradient(60rem 40rem at 12% -10%, rgb(var(--color-primary) / 0.10), transparent 60%),
+      radial-gradient(50rem 36rem at 100% 0%, rgb(var(--color-accent) / 0.07), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  /* Mehki prehodi ob menjavi teme */
+  body, .border, [class*="bg-"], [class*="text-"] {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Izbira besedila */
+  ::selection {
+    background: rgb(var(--color-primary) / 0.3);
+    color: rgb(var(--color-fg));
+  }
+
+  /* Lepši drsnik */
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--color-bg)); }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--color-border));
+    border-radius: 999px;
+    border: 3px solid rgb(var(--color-bg));
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--color-primary) / 0.6); }
+
+  /* Boljši fokus za dostopnost (navigacija s tipkovnico) */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-bg;
+  }
+}
+
+@layer components {
+  /* Skupni odmik vsebine */
+  .container-px {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* Gradientno besedilo (modra → oranžna) */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Steklen videz kartic */
+  .glass {
+    background: rgb(var(--color-surface) / 0.7);
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Dodatne animacije */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
