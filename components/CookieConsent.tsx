@@ -31,7 +31,7 @@ export function CookieConsent() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 40, scale: 0.96 }}
           transition={{ type: "spring", stiffness: 260, damping: 24 }}
-          className="fixed bottom-4 left-1/2 z-[90] w-[calc(100vw-2rem)] max-w-md -translate-x-1/2 rounded-2xl border border-border glass p-5 shadow-2xl"
+          className="fixed inset-x-4 bottom-4 z-[90] mx-auto max-w-md rounded-2xl border border-border glass p-5 shadow-2xl"
           role="dialog"
           aria-label="Obvestilo o piškotkih"
         >
