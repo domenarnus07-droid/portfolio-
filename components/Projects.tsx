@@ -52,14 +52,14 @@ export function Projects() {
 
         <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
-            {filtered.map((p) => (
+            {filtered.map((p, i) => (
               <motion.div
                 key={p.id}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.95, y: 16 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.25 }}
+                transition={{ duration: 0.3, delay: i * 0.06 }}
               >
                 <ProjectCard project={p} />
               </motion.div>

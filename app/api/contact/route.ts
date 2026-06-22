@@ -4,9 +4,33 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { siteConfig } from "@/lib/siteConfig";
 
+// Preprost rate-limit v pomnilniku (na instanco): max 5 zahtev / 10 min na IP.
+const hits = new Map<string, number[]>();
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const windowMs = 10 * 60 * 1000;
+  const arr = (hits.get(ip) || []).filter((t) => now - t < windowMs);
+  arr.push(now);
+  hits.set(ip, arr);
+  return arr.length > 5;
+}
+
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+      request.headers.get("x-real-ip") ||
+      "neznano";
+    if (rateLimited(ip)) {
+      return NextResponse.json({ error: "Preveč poskusov. Poskusi kasneje." }, { status: 429 });
+    }
+
+    const { name, email, message, company } = await request.json();
+
+    // Honeypot — boti pogosto izpolnijo skrito polje. Tiho "uspeh".
+    if (company) {
+      return NextResponse.json({ ok: true });
+    }
 
     // Strežniška validacija
     if (

@@ -19,6 +19,30 @@ export const siteConfig = {
   ],
 } as const;
 
+// Časovnica / pot (uredi po želji).
+export const timeline = [
+  {
+    year: "2026",
+    title: "Maturitetni projekt — Domen Core",
+    text: "Polna spletna trgovina s čevlji (Node.js, Express, MongoDB, Socket.io).",
+  },
+  {
+    year: "2025–26",
+    title: "Spletne rešitve za podjetja",
+    text: "Elektro Novateh — spletna stran z backendom, koledar, PDF, push obvestila.",
+  },
+  {
+    year: "2025",
+    title: "StudyOS",
+    text: "Namizni delovni prostor za študente (React, Vite, Express).",
+  },
+  {
+    year: "Trenutno",
+    title: "Stalno učenje",
+    text: "Nadgrajujem znanje full-stack razvoja in dizajna uporabniških izkušenj.",
+  },
+] as const;
+
 // Tehnologije / znanja za prikaz kot značke.
 export const skills = [
   "JavaScript", "TypeScript", "Node.js", "Express",

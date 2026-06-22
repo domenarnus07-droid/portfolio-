@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/siteConfig";
 type Status = "idle" | "sending" | "ok" | "error";
 
 export function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "", company: "" });
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -43,7 +43,7 @@ export function Contact() {
         throw new Error(data.error || "Napaka pri pošiljanju.");
       }
       setStatus("ok");
-      setForm({ name: "", email: "", message: "" });
+      setForm({ name: "", email: "", message: "", company: "" });
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Napaka pri pošiljanju.");
@@ -84,6 +84,17 @@ export function Contact() {
 
         {/* Desno: obrazec */}
         <form onSubmit={handleSubmit} noValidate className="space-y-4 rounded-2xl border border-border bg-surface p-6">
+          {/* Honeypot — skrito polje za zaznavo botov (uporabnik ga ne vidi) */}
+          <input
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute -left-[9999px] h-0 w-0 opacity-0"
+            value={form.company}
+            onChange={(e) => setForm({ ...form, company: e.target.value })}
+          />
           <div>
             <label htmlFor="c-name" className="mb-1.5 block text-sm font-medium">Ime</label>
             <input id="c-name" type="text" className={inputClass} value={form.name}
