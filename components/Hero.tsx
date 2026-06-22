@@ -3,6 +3,10 @@
 // Hero sekcija: ime, slogan, CTA gumba in prostor za maskota (placeholder).
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/siteConfig";
+import { Typewriter } from "./ui/Typewriter";
+
+// Nazivi za typewriter učinek.
+const ROLES = ["Web developer", "dijak", "full-stack razvijalec", "iz Slovenije"];
 
 export function Hero() {
   return (
@@ -12,6 +16,17 @@ export function Hero() {
     >
       {/* Subtilni animirani gradient v ozadju */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        {/* Subtilna mreža */}
+        <div
+          className="absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgb(var(--color-border)) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--color-border)) 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
+            maskImage: "radial-gradient(70% 60% at 50% 35%, black, transparent)",
+            WebkitMaskImage: "radial-gradient(70% 60% at 50% 35%, black, transparent)",
+          }}
+        />
         <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl animate-blob" />
         <div className="absolute right-0 top-40 h-80 w-80 rounded-full bg-accent/20 blur-3xl animate-blob [animation-delay:3s]" />
       </div>
@@ -33,7 +48,9 @@ export function Hero() {
             <span className="text-gradient">{siteConfig.name}</span>
           </h1>
 
-          <p className="mt-4 text-lg font-medium text-accent">{siteConfig.role}</p>
+          <p className="mt-4 text-lg font-medium text-accent">
+            <Typewriter words={ROLES} />
+          </p>
 
           <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
             {siteConfig.slogan}

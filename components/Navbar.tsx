@@ -1,12 +1,34 @@
 "use client";
 
 // Fiksen navbar z navigacijo, theme toggle in hamburger menijem na mobilnem.
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { navLinks, siteConfig } from "@/lib/siteConfig";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("#home");
+
+  // Scrollspy — označi povezavo do trenutno vidne sekcije.
+  useEffect(() => {
+    const ids = navLinks.map((l) => l.href.slice(1));
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(`#${visible.target.id}`);
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.5, 1] }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-bg/80 backdrop-blur-md">
@@ -27,7 +49,10 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm font-medium text-muted transition-colors hover:text-fg"
+                  aria-current={active === link.href ? "true" : undefined}
+                  className={`text-sm font-medium transition-colors hover:text-fg ${
+                    active === link.href ? "text-primary" : "text-muted"
+                  }`}
                 >
                   {link.label}
                 </a>
