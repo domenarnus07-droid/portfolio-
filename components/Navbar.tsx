@@ -2,6 +2,7 @@
 
 // Fiksen navbar z navigacijo, theme toggle in hamburger menijem na mobilnem.
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { navLinks } from "@/lib/siteConfig";
 import { ThemeToggle } from "./ThemeToggle";
 import { Logo } from "./Logo";
@@ -83,24 +84,43 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobilni meni */}
-      {open && (
-        <div className="border-t border-border bg-bg md:hidden">
-          <ul className="container-px flex flex-col py-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 text-base font-medium text-muted transition-colors hover:text-fg"
+      {/* Mobilni meni (animiran dropdown) */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden border-t border-border bg-bg/95 backdrop-blur-md md:hidden"
+          >
+            <ul className="container-px flex flex-col gap-1 py-3">
+              {navLinks.map((link, i) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 + i * 0.05 }}
                 >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+                  <a
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={active === link.href ? "true" : undefined}
+                    className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition-colors ${
+                      active === link.href
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted hover:bg-surface hover:text-fg"
+                    }`}
+                  >
+                    {link.label}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
