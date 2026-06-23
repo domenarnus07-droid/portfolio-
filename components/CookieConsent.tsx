@@ -33,31 +33,35 @@ export function CookieConsent() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 40, scale: 0.96 }}
           transition={{ type: "spring", stiffness: 260, damping: 24 }}
-          className="fixed inset-x-4 bottom-4 z-[80] mx-auto max-w-md rounded-2xl border border-border glass p-5 shadow-2xl"
+          className="fixed inset-x-4 bottom-4 z-[80] mx-auto max-w-sm overflow-hidden rounded-2xl border border-border glass shadow-2xl"
           role="dialog"
           aria-label="Obvestilo o piškotkih"
         >
-          <div className="flex items-start gap-3">
-            <span className="text-2xl">🍪</span>
-            <div className="flex-1">
-              <p className="text-sm font-semibold">{t.cookie.title}</p>
-              <p className="mt-1 text-sm leading-relaxed text-muted">
-                {t.cookie.text}
-              </p>
-              <div className="mt-4 flex gap-2">
-                <button
-                  onClick={() => decide("accepted")}
-                  className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
-                >
-                  {t.cookie.accept}
-                </button>
-                <button
-                  onClick={() => decide("declined")}
-                  className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-fg"
-                >
-                  {t.cookie.decline}
-                </button>
-              </div>
+          {/* gradientna črta na vrhu */}
+          <div className="h-1 w-full bg-gradient-to-r from-primary to-accent" />
+          <div className="p-5">
+            <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 text-2xl">
+                🍪
+              </span>
+              <p className="text-base font-semibold">{t.cookie.title}</p>
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              {t.cookie.text}
+            </p>
+            <div className="mt-4 flex gap-2.5">
+              <button
+                onClick={() => decide("accepted")}
+                className="flex-1 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-transform hover:-translate-y-0.5"
+              >
+                {t.cookie.accept}
+              </button>
+              <button
+                onClick={() => decide("declined")}
+                className="rounded-xl border border-border px-4 py-2.5 text-sm font-medium text-muted transition-colors hover:border-fg hover:text-fg"
+              >
+                {t.cookie.decline}
+              </button>
             </div>
           </div>
         </motion.div>

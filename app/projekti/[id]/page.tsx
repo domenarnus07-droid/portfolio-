@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/lib/siteConfig";
 import { Badge } from "@/components/ui/Badge";
+import { Gallery } from "@/components/Gallery";
 
 // Generiraj statične poti za vse projekte.
 export function generateStaticParams() {
@@ -74,19 +75,10 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
       </div>
 
       {/* Galerija dodatnih posnetkov */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {[1, 2, 3].map((n) => (
-          <div key={n} className="overflow-hidden rounded-xl border border-border">
-            <Image
-              src={`/projects/${project.id}-${n}.png`}
-              alt={`${project.title} — posnetek ${n}`}
-              width={1280}
-              height={800}
-              className="h-auto w-full object-cover"
-            />
-          </div>
-        ))}
-      </div>
+      <Gallery
+        title={project.title}
+        images={[1, 2, 3].map((n) => `/projects/${project.id}-${n}.png`)}
+      />
     </main>
   );
 }
