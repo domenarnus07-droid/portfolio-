@@ -57,6 +57,19 @@ export const dict = {
     footer: { nav: "Navigacija", contact: "Kontakt", rights: "Vse pravice pridržane.", top: "Na vrh" },
     chatbot: { greeting: "Živjo! 👋 Sem Domnov pomočnik. Vprašaj me o njegovih projektih, znanjih ali kontaktu.", name: "Domnov pomočnik", sub: "Običajno odgovori takoj", placeholder: "Napiši sporočilo …" },
     cookie: { title: "Piškotki", text: "Ta stran uporablja le nujne piškotke za boljšo izkušnjo. Brez sledenja.", accept: "Sprejmi", decline: "Zavrni" },
+    skills: { eyebrow: "Znanje", title: "Veščine" },
+    now: { eyebrow: "Trenutno", title: "Trenutno gradim", items: [
+      "Nadgrajujem Domen Core — UX in mobilna izkušnja.",
+      "Učim se naprednejše vzorce v TypeScript in Next.js.",
+      "Eksperimentiram z animacijami in dostopnostjo.",
+    ] },
+    faq: { eyebrow: "Vprašanja", title: "Pogosta vprašanja", items: [
+      { q: "Sprejemaš nove projekte?", a: "Da — piši mi prek kontaktnega obrazca ali e-pošte." },
+      { q: "S katerimi tehnologijami delaš?", a: "Node.js, Express, MongoDB, React, Next.js in Tailwind CSS." },
+      { q: "Koliko časa traja izdelava strani?", a: "Manjša stran nekaj dni, kompleksnejša aplikacija nekaj tednov." },
+      { q: "Ali ponujaš vzdrževanje?", a: "Da, po dogovoru poskrbim za posodobitve in popravke." },
+    ] },
+    cta: { title: "Imaš idejo? Pogovoriva se.", text: "Z veseljem pomagam spraviti tvoj projekt v živo.", button: "Stopi v stik" },
     projDesc: {
       "domen-core": "Premium spletna trgovina s čevlji: prijava, košarica, naročila, admin plošča in klepet v realnem času. Hkrati moj maturitetni projekt.",
       "qr-generator": "Spletni generator QR kod in izkaznic za podjetje Elektro Novateh.",
@@ -109,6 +122,19 @@ export const dict = {
     footer: { nav: "Navigation", contact: "Contact", rights: "All rights reserved.", top: "To top" },
     chatbot: { greeting: "Hi! 👋 I'm Domen's assistant. Ask me about his projects, skills or contact.", name: "Domen's assistant", sub: "Usually replies instantly", placeholder: "Type a message …" },
     cookie: { title: "Cookies", text: "This site uses only essential cookies for a better experience. No tracking.", accept: "Accept", decline: "Decline" },
+    skills: { eyebrow: "Expertise", title: "Skills" },
+    now: { eyebrow: "Now", title: "Currently building", items: [
+      "Improving Domen Core — UX and mobile experience.",
+      "Learning advanced TypeScript and Next.js patterns.",
+      "Experimenting with animations and accessibility.",
+    ] },
+    faq: { eyebrow: "Questions", title: "Frequently asked", items: [
+      { q: "Are you taking on new projects?", a: "Yes — reach out via the contact form or email." },
+      { q: "Which technologies do you use?", a: "Node.js, Express, MongoDB, React, Next.js and Tailwind CSS." },
+      { q: "How long does a website take?", a: "A small site a few days, a complex app a few weeks." },
+      { q: "Do you offer maintenance?", a: "Yes, by agreement I handle updates and fixes." },
+    ] },
+    cta: { title: "Got an idea? Let's talk.", text: "I'd be glad to help bring your project to life.", button: "Get in touch" },
     projDesc: {
       "domen-core": "Premium shoe store: login, cart, orders, admin panel and real-time chat. Also my final school project.",
       "qr-generator": "Web generator of QR codes and ID cards for the company Elektro Novateh.",
@@ -161,6 +187,19 @@ export const dict = {
     footer: { nav: "Navigacija", contact: "Kontakt", rights: "Sva prava pridržana.", top: "Na vrh" },
     chatbot: { greeting: "Bok! 👋 Ja sam Domenov asistent. Pitaj me o njegovim projektima, vještinama ili kontaktu.", name: "Domenov asistent", sub: "Obično odgovara odmah", placeholder: "Napiši poruku …" },
     cookie: { title: "Kolačići", text: "Ova stranica koristi samo nužne kolačiće za bolje iskustvo. Bez praćenja.", accept: "Prihvati", decline: "Odbij" },
+    skills: { eyebrow: "Znanje", title: "Vještine" },
+    now: { eyebrow: "Trenutno", title: "Trenutno gradim", items: [
+      "Poboljšavam Domen Core — UX i mobilno iskustvo.",
+      "Učim napredne obrasce u TypeScriptu i Next.js-u.",
+      "Eksperimentiram s animacijama i pristupačnošću.",
+    ] },
+    faq: { eyebrow: "Pitanja", title: "Često postavljana", items: [
+      { q: "Primaš li nove projekte?", a: "Da — javi mi se preko kontakt obrasca ili e-pošte." },
+      { q: "S kojim tehnologijama radiš?", a: "Node.js, Express, MongoDB, React, Next.js i Tailwind CSS." },
+      { q: "Koliko traje izrada stranice?", a: "Manja stranica nekoliko dana, složena aplikacija nekoliko tjedana." },
+      { q: "Nudiš li održavanje?", a: "Da, po dogovoru brinem o ažuriranjima i popravcima." },
+    ] },
+    cta: { title: "Imaš ideju? Razgovarajmo.", text: "Rado pomažem oživjeti tvoj projekt.", button: "Javi se" },
     projDesc: {
       "domen-core": "Premium web trgovina obućom: prijava, košarica, narudžbe, admin ploča i chat u stvarnom vremenu. Ujedno moj maturalni projekt.",
       "qr-generator": "Web generator QR kodova i iskaznica za tvrtku Elektro Novateh.",

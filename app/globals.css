@@ -106,3 +106,14 @@
   50% { transform: translateY(-10px); }
 }
 .animate-float { animation: float 6s ease-in-out infinite; }
+
+/* Drseči trak (marquee) za logotipe tehnologij */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 22s linear infinite; }
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}

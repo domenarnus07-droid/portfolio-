@@ -45,6 +45,16 @@ export const timeline = [
   },
 ] as const;
 
+// Ravni veščin (za animirane vrstice). Ime + odstotek.
+export const skillLevels = [
+  { name: "JavaScript / TypeScript", level: 90 },
+  { name: "Node.js / Express", level: 88 },
+  { name: "React / Next.js", level: 85 },
+  { name: "MongoDB", level: 82 },
+  { name: "HTML / CSS / Tailwind", level: 92 },
+  { name: "Git", level: 80 },
+] as const;
+
 // Tehnologije / znanja za prikaz kot značke.
 export const skills = [
   "JavaScript", "TypeScript", "Node.js", "Express",

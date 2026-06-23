@@ -83,7 +83,6 @@ export function Navbar() {
 
         {/* Mobilni gumbi */}
         <div className="flex items-center gap-2 md:hidden">
-          <LanguageSwitcher />
           <ThemeToggle />
           <button
             type="button"
@@ -136,6 +135,9 @@ export function Navbar() {
                   </a>
                 </motion.li>
               ))}
+              <li className="px-4 pb-1 pt-3">
+                <LanguageSwitcher />
+              </li>
             </ul>
           </motion.div>
         )}
