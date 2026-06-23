@@ -73,7 +73,7 @@ export function Footer() {
 
       {/* Spodnja vrstica */}
       <div className="border-t border-border">
-        <div className="container-px flex flex-col items-center justify-between gap-3 py-4 sm:flex-row sm:py-5">
+        <div className="container-px flex flex-col items-center justify-between gap-3 py-6 sm:flex-row">
           <p className="text-xs text-muted">© {year} {siteConfig.name}. {t.footer.rights}</p>
           <a href="#home" className="inline-flex items-center gap-1.5 text-xs font-medium text-muted transition-colors hover:text-primary">
             {t.footer.top}

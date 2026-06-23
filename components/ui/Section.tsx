@@ -17,7 +17,7 @@ export function Section({
     <motion.section
       id={id}
       // scroll-margin, da fiksen navbar ne prekrije naslova ob skoku na sidro
-      className={`scroll-mt-24 py-20 sm:py-28 ${className}`}
+      className={`scroll-mt-24 border-t border-border/60 py-20 sm:py-28 ${className}`}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}

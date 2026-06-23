@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[88vh] items-center overflow-hidden pt-16"
+      className="relative flex min-h-[88vh] items-center overflow-hidden pt-16 lg:items-start lg:pt-28"
     >
       {/* Subtilni animirani gradient v ozadju */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
@@ -39,7 +39,10 @@ export function Hero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <p className="mb-4 mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-sm text-muted sm:mt-0">
-            <span className="h-2 w-2 rounded-full bg-primary" />
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+            </span>
             {t.hero.badge}
           </p>
 

@@ -24,7 +24,7 @@ export function WhatsAppButton() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="group fixed bottom-5 left-5 z-[70] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30"
+          className="group fixed bottom-6 left-5 z-[70] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 sm:bottom-8 sm:left-6"
         >
           {/* utripajoč obroč */}
           <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-30 group-hover:opacity-0" />
